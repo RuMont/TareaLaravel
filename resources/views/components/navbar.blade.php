@@ -8,7 +8,7 @@
             <ul class="navbar-nav">
                 @if (Route::currentRouteName() != 'home')
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/home">Home</a>
+                        <a class="nav-link active" aria-current="page" href="./home">Home</a>
                     </li>
                 @endif
                 <li class="nav-item">
@@ -18,9 +18,13 @@
         </div>
         <div class="d-flex">
             @auth
-                <a class="btn btn-outline-dark">Dashboard</a>
+                <a href="./edittable" class="btn btn-outline-dark">Table</a>
             @else
-                <a class="btn btn-outline-dark">Sign In</a>
+                @if (Route::currentRouteName() != 'register')
+                    <a href="./login" class="btn btn-outline-dark">Sign In</a>
+                @else
+                    <a class="visually-hidden btn btn-outline-dark">Sign In</a>
+                @endif
             @endauth
         </div>
     </div>

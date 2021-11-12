@@ -1,4 +1,4 @@
-<div class="row justify-content-center pt-5">
+<div class="row justify-content-center py-5 gradient-custom">
     <div class="col-9">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
@@ -8,13 +8,13 @@
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active pt-3">
-                    <img src="../resources/img/slider1.jpg" class="d-block w-100" alt="1">
+                    <img src="../resources/img/slider1.jpg" class="d-block w-100" alt="1" style="border-radius: 25px;">
                 </div>
                 <div class="carousel-item pt-3">
-                    <img src="../resources/img/slider2.png" class="d-block w-100" alt="2">
+                    <img src="../resources/img/slider2.png" class="d-block w-100" alt="2" style="border-radius: 25px;">
                 </div>
                 <div class="carousel-item pt-3">
-                    <img src="../resources/img/slider3.jpg" class="d-block w-100" alt="3">
+                    <img src="../resources/img/slider3.jpg" class="d-block w-100" alt="3" style="border-radius: 25px;">
                 </div>
             </div>
         </div>

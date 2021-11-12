@@ -12,10 +12,16 @@
         body {
             overflow-x: hidden;
         }
+
+        .gradient-custom {
+            background: #f093fb;
+            background: -webkit-linear-gradient(to bottom right, rgba(240, 147, 251, 1), rgba(245, 87, 108, 1));
+            background: linear-gradient(to bottom right, rgba(240, 147, 251, 1), rgba(245, 87, 108, 1))
+        }
     </style>
 </head>
 
-<body>
+<body style="background-color: lightblue">
     @include('components/navbar')
     @include('components/carousel')
     @include('components/footer')

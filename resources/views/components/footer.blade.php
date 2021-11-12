@@ -1,4 +1,4 @@
-<footer class="sticky-bottom pt-4 my-md-5 pt-md-5 border-top">
+<footer class="sticky-bottom pt-4 my-md-5 pt-md-5">
     <div class="row">
         <div class="ms-4 col-12 col-md">
         <img class="mb-2" src="../resources/img/square.png" alt="Logo" width="32" height="32">

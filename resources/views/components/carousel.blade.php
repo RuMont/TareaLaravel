@@ -1,5 +1,5 @@
 <div class="row justify-content-center pt-5">
-    <div class="col-6">
+    <div class="col-9">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>

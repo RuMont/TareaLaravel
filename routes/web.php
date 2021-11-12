@@ -18,9 +18,15 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/home', function () {
-    return view('home');
-})->name('home');
+    return view('login');
+})->name('login');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::get('/edittable', function () {
+    return view('edittable');
+})->name('edittable');
+
+Route::get('/readtable', function () {
+    return view('readtable');
+})->name('readtable');
+
+

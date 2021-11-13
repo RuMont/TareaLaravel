@@ -21,6 +21,14 @@ Route::get('/home', function () {
     return view('home');
 })->name('home');
 
+Route::get('/edittable', function () {
+    return view('edittable');
+})->name('edittable');
+
+Route::get('/readtable', function () {
+    return view('readtable');
+})->name('readtable');
+
 Route::get('/register', function () {
     return view('register');
 })->name('register');

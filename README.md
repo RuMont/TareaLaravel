@@ -22,4 +22,8 @@ Para composer:
 
     composer install
 
+Para migrar las tablas creadas a phpmyadmin:
+
+    php artisan migrate
+
 Y ya podrías visualizar en tu navegador este proyecto con la dirección de localhost.

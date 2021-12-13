@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFichajesTable extends Migration
+class ChecksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateFichajesTable extends Migration
      */
     public function up()
     {
-        Schema::create('fichajes', function (Blueprint $table) {
-            $table->id()->unique()->increments();
-            $table->integer('id_user');
-            $table->timestamp('fecha');
-            $table->string('e_s');
+        Schema::create('checks', function (Blueprint $table) {
+            Schema::enableForeignKeyConstraints();
+            $table->id();
+            $table->timestamps();
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
         });
     }
 
@@ -28,6 +28,6 @@ class CreateFichajesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fichajes');
+        Schema::dropIfExists('checks');
     }
 }

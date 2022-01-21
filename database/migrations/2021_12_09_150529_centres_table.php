@@ -17,6 +17,7 @@ class CentresTable extends Migration
             $table->id();
             $table->string('city', 100);
             $table->string('name', 200);
+            $table->timestamps();
         });
     }
 

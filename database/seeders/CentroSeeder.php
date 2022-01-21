@@ -2,17 +2,18 @@
 
 namespace Database\Seeders;
 
+use App\Models\Centro;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class CentroSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-        $this->call(CentroSeeder::class);
+        Centro::factory()->times(10)->create();
     }
 }

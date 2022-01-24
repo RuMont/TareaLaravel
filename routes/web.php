@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CentroController;
+use App\Http\Controllers\ChecksController;
+use App\Http\Controllers\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +17,10 @@ use App\Http\Controllers\CentroController;
 */
 
 Route::get('centros',[CentroController::class, 'index']);
+
+Route::get('usuarios',[UsersController::class, 'index']);
+
+Route::get('checks',[ChecksController::class, 'index']);
 
 Route::get('/', function () {
     return view('home');

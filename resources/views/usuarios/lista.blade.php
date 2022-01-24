@@ -19,7 +19,7 @@
 
         </tr>
 
-        @foreach($users as $user)
+        @foreach($usuarios as $user)
             <tr>
                 <td>{{$user->id}}</td>
                 <td>{{$user->dni}}</td>

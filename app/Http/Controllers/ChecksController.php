@@ -1,26 +1,21 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Users;
 
 use Illuminate\Http\Request;
+use App\Models\Checks;
 
-class UsersController extends Controller
+class ChecksController extends Controller
 {
-    protected $userModel;
+    protected $checksModel;
 
-    public function __construct(Users $user){
-        $this->userModel = $user;
+    public function __construct(Checks $checks){
+        $this->checksModel = $checks;
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        $users = $this->userModel->obtenerUsuarios();
-        return view('usuarios.lista', ['usuarios' => $users]);
+        $checks = $this->checksModel->obtenerChecks();
+        return view('checks.lista', ['checks' => $checks]);
     }
 
     /**

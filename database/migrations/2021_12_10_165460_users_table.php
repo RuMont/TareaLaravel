@@ -21,6 +21,7 @@ class UsersTable extends Migration
             $table->string('surname', 200);
             $table->date('birth_date');
             $table->foreignId('centre_id')->constrained('centres')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 

@@ -20,7 +20,7 @@ class CentroFactory extends Factory{
             // Devolvemos datos inventados para nuestras columnas
 
             'city' => $this->faker->name(),
-            'name' => $this->faker->name(),
+            'name' => $this->faker->name()
         ];
     }
 }

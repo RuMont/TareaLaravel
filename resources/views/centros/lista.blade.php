@@ -7,11 +7,12 @@
     <title>Document</title>
 </head>
 <body>
+    <button>Añadir</button>
     <table>
         <tr>
             <th>ID</th>
-            <th>CityName</th>
-            <th>Name</th>
+            <th>city</th>
+            <th>name</th>
         </tr>
 
         @foreach($centros as $centro)
@@ -19,6 +20,10 @@
                 <td>{{$centro->id}}</td>
                 <td>{{$centro->city}}</td>
                 <td>{{$centro->name}}</td>
+                <td>
+                    <a href="{{url('centros/edit')}}/{{$centro->id}}">Editar</a>
+                    <button>Borrar</button>
+                </td>
             </tr>
         @endforeach
     </table>

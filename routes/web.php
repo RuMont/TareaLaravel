@@ -22,6 +22,8 @@ Route::get('usuarios',[UsersController::class, 'index']);
 
 Route::get('checks',[ChecksController::class, 'index']);
 
+Route::get('centros/edit/{id}',[CentroController::class, 'edit']);
+
 Route::get('/', function () {
     return view('home');
 })->name('home');

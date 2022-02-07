@@ -39,7 +39,9 @@ class CentroController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $centro = new Centro($request->all());
+        $centro->save();
+        return redirect()->action([CentroController::class, 'index']);
     }
 
     /**
@@ -61,7 +63,8 @@ class CentroController extends Controller
      */
     public function edit($id)
     {
-        //
+        $selectedCentro = $this->centroModel->obtenerCentroPorCodigo($id);
+        return view('centros.update', ['centro' => $selectedCentro]);
     }
 
     /**
@@ -73,7 +76,7 @@ class CentroController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        echo $request;
     }
 
     /**

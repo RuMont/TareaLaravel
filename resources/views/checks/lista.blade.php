@@ -14,7 +14,7 @@
 <body>
 {{-- Formulario para añadir fichajes --}}
   <hr/>
-  <form class="col-6 mx-auto" action="{{ url('checks/insert') }}" method="post">
+  <form class="col-6 mx-auto" action="{{ url('checks') }}" method="post">
     
     @csrf {{-- Token obligatorio para utilizar method="post" --}}
     <div class="form-group">

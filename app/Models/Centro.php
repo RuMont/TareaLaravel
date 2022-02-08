@@ -37,5 +37,9 @@ class Centro extends Model
         return Centro::where('nombre','like','%' . $texto );
     }
 
+    public function actualizarCentrosPorCodigo($id) {
+        // return Centro::updating()
+    }
+
 
 }

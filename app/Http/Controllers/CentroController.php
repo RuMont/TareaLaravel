@@ -14,6 +14,7 @@ class CentroController extends Controller
     }
 
     // Funcion index
+    // Devuelve la tabla centres de la base de datos
 
     public function index()
     {
@@ -32,14 +33,16 @@ class CentroController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Inserta nuevo centro en la db centres
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        $centro = new Centro($request->all());
+        $centro->save();
+        return redirect()->action([CentroController::class, 'index']);
     }
 
     /**
@@ -54,18 +57,19 @@ class CentroController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Lleva al formulario de actualización
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+        $selectedCentro = $this->centroModel->obtenerCentroPorCodigo($id);
+        return view('centros.update', ['centro' => $selectedCentro]);
     }
 
     /**
-     * Update the specified resource in storage.
+     * Actualiza valores del elemento con id pasada por parámetro via ruta POST
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -73,17 +77,21 @@ class CentroController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $centro = Centro::find($id);
+        $centro->update(["city" => $request->city, "name" => $request->name]);
+        $centro->save();
+        return redirect("/centros");
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Borra el elemento con id pasada por parámetro via ruta GET
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        Centro::destroy($id);
+        return redirect("/centros");
     }
 }

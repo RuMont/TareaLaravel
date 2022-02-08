@@ -26,4 +26,8 @@ Para migrar las tablas creadas a phpmyadmin:
 
     php artisan migrate
 
+Para ejecutar los seeders:
+
+    php artisan migrate:refresh --seed
+
 Y ya podrías visualizar en tu navegador este proyecto con la dirección de localhost.

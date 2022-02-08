@@ -8,13 +8,13 @@
   <!-- CSS only -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <title>ListaCentros</title>
+  <title>Lista checks</title>
 </head>
 
 <body>
 {{-- Formulario para añadir fichajes --}}
   <hr/>
-  <form class="col-6 mx-auto" action="{{ url('checks') }}" method="post">
+  <form class="col-6 mx-auto" action="{{ url('checks/insert') }}" method="post">
     
     @csrf {{-- Token obligatorio para utilizar method="post" --}}
     <div class="form-group">
@@ -24,10 +24,6 @@
     <div class="form-group">
       <label for="user_id">user ID</label>
       <input type="text" class="form-control" name="user_id" placeholder="Enter user id">
-    </div>
-    <div class="form-group">
-      <label for="time">time</label>
-      <input type="text" class="form-control" name="time" placeholder="Enter entry time">
     </div>
     <br>
     <button type="submit" class="btn btn-primary mt-1 text-align-center">Send</button>
@@ -52,7 +48,8 @@
                 <td>{{$check->created_at}}</td>
                 <td>{{$check->updated_at}}</td>
                 <td>
-                    <a class="ms-1 btn btn-primary" href="{{url('checks/delete')}}/{{ $check->id}}">Delete</a>
+                  <a class="ms-1 btn btn-primary" href="{{url('checks/update')}}/{{ $check->id}}">EXIT</a>
+                  <a class="ms-1 btn btn-danger" href="{{url('checks/delete')}}/{{ $check->id}}">Delete</a>
                   </td>
             </tr>
         @endforeach

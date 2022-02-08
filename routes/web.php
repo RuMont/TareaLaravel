@@ -32,7 +32,7 @@ Route::get('checks',[ChecksController::class, 'index']);
 //Inserta elemento nuevo
 Route::post('checks/insert',[ChecksController::class, 'store']);
 //Lleva al form de actualización
-Route::post('checks/update/{id}',[ChecksController::class, 'update']);
+Route::get('checks/update/{id}',[ChecksController::class, 'update']);
 //Borra un elemento pasado por id
 Route::get('checks/delete/{id}',[ChecksController::class, 'destroy']);
 

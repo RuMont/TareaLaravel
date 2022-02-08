@@ -16,13 +16,26 @@ use App\Http\Controllers\UsersController;
 |
 */
 
+//Obtiene las filas de la db
 Route::get('centros',[CentroController::class, 'index']);
+//Inserta elemento nuevo
+Route::post('centros/insert',[CentroController::class, 'store']);
+//Lleva al form de actualización
+Route::get('centros/edit/{id}',[CentroController::class, 'edit']);
+//Actualiza un elemento pasado por id
+Route::post('centros/update/{id}',[CentroController::class, 'update']);
+//Borra un elemento pasado por id
+Route::get('centros/delete/{id}',[CentroController::class, 'destroy']);
 
-Route::get('usuarios',[UsersController::class, 'index']);
 
 Route::get('checks',[ChecksController::class, 'index']);
+//Crear rutas como las de centros pero para este controller
 
-Route::get('centros/edit/{id}',[CentroController::class, 'edit']);
+
+Route::get('usuarios',[UsersController::class, 'index']);
+//Crear rutas como las de centros pero para este controller
+
+
 
 Route::get('/', function () {
     return view('home');

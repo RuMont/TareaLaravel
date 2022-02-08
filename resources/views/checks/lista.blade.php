@@ -12,7 +12,27 @@
 </head>
 
 <body>
-  {{-- Formulario para añadir centros --}}
+{{-- Formulario para añadir fichajes --}}
+  <hr/>
+  <form class="col-6 mx-auto" action="{{ url('checks/insert') }}" method="post">
+    
+    @csrf {{-- Token obligatorio para utilizar method="post" --}}
+    <div class="form-group">
+      <label for="check_id">Check ID</label>
+      <input type="text" class="form-control" name="check_id" placeholder="Enter check id">
+    </div>
+    <div class="form-group">
+      <label for="user_id">user ID</label>
+      <input type="text" class="form-control" name="user_id" placeholder="Enter user id">
+    </div>
+    <div class="form-group">
+      <label for="time">time</label>
+      <input type="text" class="form-control" name="time" placeholder="Enter entry time">
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary mt-1 text-align-center">Send</button>
+  </form>
+  <hr />
   
 
   <div class="row">
@@ -32,8 +52,8 @@
                 <td>{{$check->created_at}}</td>
                 <td>{{$check->updated_at}}</td>
                 <td>
-                    <a class="ms-1 btn btn-primary" href="{{url('checks/delete')}}/{{ $checks->id}}" >Delete</a>
-                </td>
+                    <a class="ms-1 btn btn-primary" href="{{url('checks/delete')}}/{{ $check->id}}">Delete</a>
+                  </td>
             </tr>
         @endforeach
     </table>

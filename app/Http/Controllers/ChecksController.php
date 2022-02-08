@@ -75,7 +75,7 @@ class ChecksController extends Controller
     public function update(Request $request, $id)
     {
         $checks = Centro::find($id);
-        $checks->update(["user_id" => $request->foreignId('user_id')]);
+        $checks->update(["user_id" => $request->user_id]);
         $checks->save();
         return redirect("/checks");
     }

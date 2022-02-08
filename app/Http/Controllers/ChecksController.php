@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Centro;
 use Illuminate\Http\Request;
 use App\Models\Checks;
 
@@ -36,7 +37,9 @@ class ChecksController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $checks = new Checks($request->all());
+        $checks->save();
+        return redirect()->action([CentroController::class, 'index']);
     }
 
     /**
@@ -58,7 +61,8 @@ class ChecksController extends Controller
      */
     public function edit($id)
     {
-        //
+        $selectedCheck = $this->checksModel->obtenerChecksPorCodigo($id);
+        return view('checks.update', ['checks' => $selectedCheck]);
     }
 
     /**
@@ -70,7 +74,10 @@ class ChecksController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $checks = Centro::find($id);
+        $checks->update(["user_id" => $request->foreignId('user_id')]);
+        $checks->save();
+        return redirect("/checks");
     }
 
     /**
@@ -81,6 +88,7 @@ class ChecksController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Checks::destroy($id);
+        return redirect("/checks");
     }
 }

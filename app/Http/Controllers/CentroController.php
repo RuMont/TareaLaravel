@@ -13,7 +13,6 @@ class CentroController extends Controller
         $this->centroModel = $centro;
     }
 
-    // Funcion index
     // Devuelve la tabla centres de la base de datos
 
     public function index()

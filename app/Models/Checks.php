@@ -16,4 +16,8 @@ class Checks extends Model
     public function obtenerChecks(){
         return Checks::all();
     }
+
+    public function obtenerChecksPorCodigo($primaryKey){
+        return Checks::find($primaryKey);
+}
 }

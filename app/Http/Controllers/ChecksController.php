@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Centro;
 use Illuminate\Http\Request;
 use App\Models\Checks;
+use DateTime;
 
 class ChecksController extends Controller
 {
@@ -36,7 +38,10 @@ class ChecksController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $checks = new Checks($request->all());
+        date_default_timezone_set('Europe/Madrid');
+        $checks->save();
+        return redirect()->action([ChecksController::class, 'index']);
     }
 
     /**
@@ -58,7 +63,8 @@ class ChecksController extends Controller
      */
     public function edit($id)
     {
-        //
+        $selectedCheck = $this->checksModel->obtenerChecksPorCodigo($id);
+        return view('checks.update', ['checks' => $selectedCheck]);
     }
 
     /**
@@ -68,9 +74,13 @@ class ChecksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id)
     {
-        //
+        $checks = Checks::find($id);
+        date_default_timezone_set('Europe/Madrid');
+        $checks->update(["updated_at" => date("Y-m-d H:i:s")]);
+        $checks->save();
+        return redirect("/checks");
     }
 
     /**
@@ -81,6 +91,7 @@ class ChecksController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Checks::destroy($id);
+        return redirect("/checks");
     }
 }

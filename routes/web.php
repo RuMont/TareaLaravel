@@ -38,7 +38,14 @@ Route::get('checks/delete/{id}',[ChecksController::class, 'destroy']);
 
 
 Route::get('usuarios',[UsersController::class, 'index']);
-//Crear rutas como las de centros pero para este controller
+//Inserta elemento nuevo
+Route::post('usuarios/insert',[UsersController::class, 'store']);
+//Lleva al form de actualización
+Route::get('usuarios/edit/{id}',[UsersController::class, 'edit']);
+//Actualiza un elemento pasado por id
+Route::post('usuarios/update/{id}',[UsersController::class, 'update']);
+//Borra un elemento pasado por id
+Route::get('usuarios/delete/{id}',[UsersController::class, 'destroy']);
 
 
 

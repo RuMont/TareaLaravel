@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Users;
-
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
@@ -41,7 +41,9 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new Users($request->all());
+        $user->save();
+        return redirect()->action([UsersController::class, 'index']);
     }
 
     /**
@@ -63,7 +65,9 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $selectedUser = $this->userModel->obtenerUsuarioPorCodigo($id);
+        return view('usuarios.update', ['usuario' => $selectedUser]);
+   
     }
 
     /**
@@ -75,7 +79,11 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $user = Users::find($id);
+        $user->update(["dni" => $request->dni, "name" => $request->name, "surname" => $request->surname, "birth_date" => $request->birth_date, "centre_id" => $request->centre_id ]);
+        $user->save();
+        return redirect("/usuarios");
     }
 
     /**
@@ -86,6 +94,7 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Users::destroy($id);
+        return redirect("/usuarios");
     }
 }

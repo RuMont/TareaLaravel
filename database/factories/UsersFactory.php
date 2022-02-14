@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\Users;
 use App\Models\Centro;
 use Illuminate\Database\Eloquent\Factories\Factory;
 

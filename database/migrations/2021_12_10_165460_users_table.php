@@ -18,9 +18,8 @@ class UsersTable extends Migration
             $table->id();
             $table->string('dni', 9)->unique();
             $table->string('name', 200);
-            $table->string('surname', 200);
-            $table->date('birth_date');
-            $table->foreignId('centre_id')->constrained('centres')->onDelete('cascade');
+            $table->string('password', 200);
+            $table->boolean('is_admin')->default(false);
             $table->timestamps();
         });
     }

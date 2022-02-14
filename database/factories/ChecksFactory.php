@@ -17,7 +17,6 @@ class ChecksFactory extends Factory
     public function definition()
     {
         return [
-            'id' => $this->faker->numerify('##'),
             'created_at' => $this->faker->date('Y-m-d H:i:s'),
             'updated_at' => $this->faker->date('Y-m-d H:i:s'),
             'user_id' => Users::all()->random()->id

@@ -17,8 +17,6 @@ class CentroFactory extends Factory{
     public function definition()
     {
         return [
-            // Devolvemos datos inventados para nuestras columnas
-
             'city' => $this->faker->name(),
             'name' => $this->faker->name()
         ];

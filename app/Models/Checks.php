@@ -11,7 +11,7 @@ class Checks extends Model
 
     protected $table = "checks";
     protected $primaryKey = "id";
-    protected $fillable = ['created_at', 'updated_at', 'user_id'];
+    protected $fillable = ['user_id', 'entry_time', 'exit_time', 'centres_id'];
 
     public function obtenerChecks(){
         return Checks::all();

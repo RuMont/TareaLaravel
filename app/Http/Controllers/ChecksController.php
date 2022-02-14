@@ -17,6 +17,7 @@ class ChecksController extends Controller
     public function index()
     {
         $checks = $this->checksModel->obtenerChecks();
+        // TODO Cambiar ruta
         return view('checks.lista', ['checks' => $checks]);
     }
 
@@ -41,6 +42,7 @@ class ChecksController extends Controller
         $checks = new Checks($request->all());
         date_default_timezone_set('Europe/Madrid');
         $checks->save();
+        // TODO Cambiar ruta
         return redirect()->action([ChecksController::class, 'index']);
     }
 
@@ -64,6 +66,7 @@ class ChecksController extends Controller
     public function edit($id)
     {
         $selectedCheck = $this->checksModel->obtenerChecksPorCodigo($id);
+        // TODO Cambiar ruta
         return view('checks.update', ['checks' => $selectedCheck]);
     }
 
@@ -80,6 +83,7 @@ class ChecksController extends Controller
         date_default_timezone_set('Europe/Madrid');
         $checks->update(["updated_at" => date("Y-m-d H:i:s")]);
         $checks->save();
+        // TODO Cambiar ruta
         return redirect("/checks");
     }
 
@@ -92,6 +96,7 @@ class ChecksController extends Controller
     public function destroy($id)
     {
         Checks::destroy($id);
+        // TODO Cambiar ruta
         return redirect("/checks");
     }
 }

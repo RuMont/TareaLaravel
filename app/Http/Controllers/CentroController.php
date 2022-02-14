@@ -18,6 +18,7 @@ class CentroController extends Controller
     public function index()
     {
         $centros = $this->centroModel->obtenerCentros();
+        // TODO Cambiar ruta
         return view('centros.lista', ['centros' => $centros]);
     }
 
@@ -41,6 +42,7 @@ class CentroController extends Controller
     {
         $centro = new Centro($request->all());
         $centro->save();
+        // TODO Cambiar ruta
         return redirect()->action([CentroController::class, 'index']);
     }
 
@@ -64,6 +66,7 @@ class CentroController extends Controller
     public function edit($id)
     {
         $selectedCentro = $this->centroModel->obtenerCentroPorCodigo($id);
+        // TODO Cambiar ruta
         return view('centros.update', ['centro' => $selectedCentro]);
     }
 
@@ -79,6 +82,7 @@ class CentroController extends Controller
         $centro = Centro::find($id);
         $centro->update(["city" => $request->city, "name" => $request->name]);
         $centro->save();
+        // TODO Cambiar ruta
         return redirect("/centros");
     }
 
@@ -91,6 +95,7 @@ class CentroController extends Controller
     public function destroy($id)
     {
         Centro::destroy($id);
+        // TODO Cambiar ruta
         return redirect("/centros");
     }
 }

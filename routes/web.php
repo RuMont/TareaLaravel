@@ -5,47 +5,36 @@ use App\Http\Controllers\CentroController;
 use App\Http\Controllers\ChecksController;
 use App\Http\Controllers\UsersController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-//Obtiene las filas de la db
-Route::get('centros',[CentroController::class, 'index']);
-//Inserta elemento nuevo
-Route::post('centros/insert',[CentroController::class, 'store']);
-//Lleva al form de actualización
-Route::get('centros/edit/{id}',[CentroController::class, 'edit']);
-//Actualiza un elemento pasado por id
-Route::post('centros/update/{id}',[CentroController::class, 'update']);
-//Borra un elemento pasado por id
-Route::get('centros/delete/{id}',[CentroController::class, 'destroy']);
+// //Obtiene las filas de la db
+// Route::get('centros',[CentroController::class, 'index']);
+// //Inserta elemento nuevo
+// Route::post('centros/insert',[CentroController::class, 'store']);
+// //Lleva al form de actualización
+// Route::get('centros/edit/{id}',[CentroController::class, 'edit']);
+// //Actualiza un elemento pasado por id
+// Route::post('centros/update/{id}',[CentroController::class, 'update']);
+// //Borra un elemento pasado por id
+// Route::get('centros/delete/{id}',[CentroController::class, 'destroy']);
 
 
-Route::get('checks',[ChecksController::class, 'index']);
-//Inserta elemento nuevo
-Route::post('checks/insert',[ChecksController::class, 'store']);
-//Lleva al form de actualización
-Route::get('checks/update/{id}',[ChecksController::class, 'update']);
-//Borra un elemento pasado por id
-Route::get('checks/delete/{id}',[ChecksController::class, 'destroy']);
+// Route::get('checks',[ChecksController::class, 'index']);
+// //Inserta elemento nuevo
+// Route::post('checks/insert',[ChecksController::class, 'store']);
+// //Lleva al form de actualización
+// Route::get('checks/update/{id}',[ChecksController::class, 'update']);
+// //Borra un elemento pasado por id
+// Route::get('checks/delete/{id}',[ChecksController::class, 'destroy']);
 
 
-Route::get('usuarios',[UsersController::class, 'index']);
-//Inserta elemento nuevo
-Route::post('usuarios/insert',[UsersController::class, 'store']);
-//Lleva al form de actualización
-Route::get('usuarios/edit/{id}',[UsersController::class, 'edit']);
-//Actualiza un elemento pasado por id
-Route::post('usuarios/update/{id}',[UsersController::class, 'update']);
-//Borra un elemento pasado por id
-Route::get('usuarios/delete/{id}',[UsersController::class, 'destroy']);
+// Route::get('usuarios',[UsersController::class, 'index']);
+// //Inserta elemento nuevo
+// Route::post('usuarios/insert',[UsersController::class, 'store']);
+// //Lleva al form de actualización
+// Route::get('usuarios/edit/{id}',[UsersController::class, 'edit']);
+// //Actualiza un elemento pasado por id
+// Route::post('usuarios/update/{id}',[UsersController::class, 'update']);
+// //Borra un elemento pasado por id
+// Route::get('usuarios/delete/{id}',[UsersController::class, 'destroy']);
 
 
 

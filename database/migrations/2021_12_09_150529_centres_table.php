@@ -15,8 +15,8 @@ class CentresTable extends Migration
     {
         Schema::create('centres', function (Blueprint $table) {
             $table->id();
-            $table->string('city', 100);
             $table->string('name', 200);
+            $table->string('city', 200);
             $table->timestamps();
         });
     }

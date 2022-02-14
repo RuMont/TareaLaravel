@@ -12,7 +12,7 @@ class Centro extends Model
     // Definimos las variables
     protected $table = "centres";
     protected $primaryKey = 'id';
-    protected $fillable = ['city' , 'name'];
+    protected $fillable = ['name', 'city'];
 
     // Obtener todos los centros
     public function obtenerCentros()

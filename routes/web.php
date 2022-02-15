@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CentroController;
 use App\Http\Controllers\ChecksController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\LoginController;
 
 // //Obtiene las filas de la db
 // Route::get('centros',[CentroController::class, 'index']);
@@ -28,7 +29,7 @@ use App\Http\Controllers\UsersController;
 
 // Route::get('usuarios',[UsersController::class, 'index']);
 // //Inserta elemento nuevo
-// Route::post('usuarios/insert',[UsersController::class, 'store']);
+Route::post('usuarios/insert',[UsersController::class, 'store']);
 // //Lleva al form de actualización
 // Route::get('usuarios/edit/{id}',[UsersController::class, 'edit']);
 // //Actualiza un elemento pasado por id
@@ -36,6 +37,7 @@ use App\Http\Controllers\UsersController;
 // //Borra un elemento pasado por id
 // Route::get('usuarios/delete/{id}',[UsersController::class, 'destroy']);
 
+Route::post('/auth',[LoginController::class, 'authenticate']);
 
 
 Route::get('/', function () {
@@ -46,7 +48,7 @@ Route::get('/home', function () {
     return view('home');
 })->name('home');
 
-Route::get('/edittable', function () {
+Route::post('/edittable', function () {
     return view('edittable');
 })->name('edittable');
 

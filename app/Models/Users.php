@@ -12,7 +12,7 @@ class Users extends Model
     // Definimos las variables
     protected $table = "users";
     protected $primaryKey = "id";
-    protected $fillable = ['dni', 'name', 'password', 'is_admin'];
+    protected $fillable = ['email', 'dni', 'password', 'is_admin'];
 
     // Obtener todos los centros
     public function obtenerUsuarios()

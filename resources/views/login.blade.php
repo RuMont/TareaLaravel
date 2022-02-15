@@ -49,7 +49,8 @@
               </div>
 
 
-              <form>
+              <form method="POST" action="{{ url('/auth') }}">
+                @csrf
                 <div class="row">
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
@@ -65,7 +66,7 @@
                   </div>
                 </div>
 
-                @if (isset($_GET['error']))
+                @if (Session::has('errors'))
                   <div class="row">
                     <div class="col text-center">
                       <p class="text-danger">Credentials are not valid</p>

@@ -21,7 +21,7 @@
                 <a href="./edittable" class="btn btn-outline-dark">Table</a>
             @else
                 @if (Route::currentRouteName() != 'register')
-                    <a href="./login" class="btn btn-outline-dark">Sign In</a>
+                    <a href="./login" class="btn btn-outline-dark">Sign Up</a>
                 @else
                     <a class="visually-hidden btn btn-outline-dark">Sign In</a>
                 @endif

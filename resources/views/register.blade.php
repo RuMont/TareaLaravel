@@ -45,56 +45,14 @@
           <div class="card shadow-lg card-registration" style="border-radius: 15px;">
             <div class="card-body p-4">
               <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration</h3>
-              <form>
-
+              <form method="POST" action={{ url('usuarios/insert') }} >
+                @csrf
                 <div class="row">
-                  <div class="col-md-6 mb-4">
+                  <div class="col mb-4">
 
                     <div class="form-outline">
-                      <input type="text" id="firstName" class="form-control form-control-lg" />
-                      <label class="form-label" for="firstName">First Name</label>
-                    </div>
-
-                  </div>
-                  <div class="col-md-6 mb-4">
-
-                    <div class="form-outline">
-                      <input type="text" id="lastName" class="form-control form-control-lg" />
-                      <label class="form-label" for="lastName">Last Name</label>
-                    </div>
-
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-md-6 mb-4 d-flex align-items-center">
-
-                    <div class="form-outline datepicker w-100">
-                      <input type="text" class="form-control form-control-lg" id="birthdayDate" />
-                      <label for="birthdayDate" class="form-label">Birthday</label>
-                    </div>
-
-                  </div>
-                  <div class="col-md-6 mb-4">
-
-                    <h6 class="mb-2 pb-1">Gender: </h6>
-
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="femaleGender"
-                        value="option1" checked />
-                      <label class="form-check-label" for="femaleGender">Female</label>
-                    </div>
-
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="maleGender"
-                        value="option2" />
-                      <label class="form-check-label" for="maleGender">Male</label>
-                    </div>
-
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="otherGender"
-                        value="option3" />
-                      <label class="form-check-label" for="otherGender">Other</label>
+                      <input type="email" id="email" class="form-control form-control-lg" name="email" />
+                      <label class="form-label" for="email">Email</label>
                     </div>
 
                   </div>
@@ -104,22 +62,19 @@
                   <div class="col-md-6 mb-4 pb-2">
 
                     <div class="form-outline">
-                      <input type="email" id="emailAddress" class="form-control form-control-lg" />
-                      <label class="form-label" for="emailAddress">Email</label>
+                      <input type="text" id="dni" class="form-control form-control-lg" name="dni" />
+                      <label class="form-label" for="dni">DNI</label>
                     </div>
 
                   </div>
                   <div class="col-md-6 mb-4 pb-2">
 
                     <div class="form-outline">
-                      <input type="password" id="phoneNumber" class="form-control form-control-lg" />
-                      <label class="form-label" for="phoneNumber">Password</label>
+                      <input type="password" id="password" class="form-control form-control-lg" name="password"/>
+                      <label class="form-label" for="password">Password</label>
                     </div>
 
                   </div>
-                </div>
-
-                <div class="row">
                 </div>
 
                 <div class="mt-4 pt-2 text-center">

@@ -14,10 +14,9 @@ class UsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            Schema::enableForeignKeyConstraints();
             $table->id();
-            $table->string('dni', 9)->unique();
-            $table->string('name', 200);
+            $table->string('dni', 9);
+            $table->string('email', 200)->unique();
             $table->string('password', 200);
             $table->boolean('is_admin')->default(false);
             $table->timestamps();

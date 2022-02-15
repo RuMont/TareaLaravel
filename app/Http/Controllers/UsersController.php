@@ -1,8 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
 use App\Models\Users;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+
 
 class UsersController extends Controller
 {
@@ -42,9 +46,10 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         $user = new Users($request->all());
+        $password = Hash::make($request->getPassword());
+        $user->password = $password;
         $user->save();
-        // TODO Cambiar ruta
-        return redirect()->action([UsersController::class, 'index']);
+        return redirect()->route('login');
     }
 
     /**

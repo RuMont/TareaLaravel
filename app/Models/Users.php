@@ -4,10 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Auth\Authenticatable;
 
-class Users extends Model
+class Users extends Model implements AuthenticatableContract
 {
     use HasFactory;
+    use Authenticatable;
 
     // Definimos las variables
     protected $table = "users";
@@ -21,7 +24,8 @@ class Users extends Model
     }
 
     // Obtenemos el usuarios por id
-    public function obtenerUsuarioPorCodigo($primaryKey){
-            return Users::find($primaryKey);
+    public function obtenerUsuarioPorCodigo($primaryKey)
+    {
+        return Users::find($primaryKey);
     }
 }

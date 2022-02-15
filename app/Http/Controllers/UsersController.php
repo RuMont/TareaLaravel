@@ -46,7 +46,7 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         $user = new Users($request->all());
-        $password = Hash::make($request->getPassword());
+        $password = Hash::make($request->password);
         $user->password = $password;
         $user->save();
         return redirect()->route('login');

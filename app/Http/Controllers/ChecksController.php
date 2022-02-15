@@ -40,10 +40,9 @@ class ChecksController extends Controller
     public function store(Request $request)
     {
         $checks = new Checks($request->all());
-        date_default_timezone_set('Europe/Madrid');
+        dd($checks);
         $checks->save();
-        // TODO Cambiar ruta
-        return redirect()->action([ChecksController::class, 'index']);
+        return redirect()->route('readtable');
     }
 
     /**

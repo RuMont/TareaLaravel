@@ -1,4 +1,4 @@
-<section class="p-5 gradient-custom">
+<section class="p-5">
   <div class="card bg-light shadow p-3 m-5 rounded">
     <div class="card-body">
 

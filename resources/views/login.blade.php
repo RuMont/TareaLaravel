@@ -15,12 +15,6 @@
       overflow-x: hidden;
     }
 
-    .gradient-custom {
-      background: #f093fb;
-      background: -webkit-linear-gradient(to bottom right, rgba(240, 147, 251, 1), rgba(245, 87, 108, 1));
-      background: linear-gradient(to bottom right, rgba(240, 147, 251, 1), rgba(245, 87, 108, 1))
-    }
-
     .card-registration .select-input.form-control[readonly]:not([disabled]) {
       font-size: 1rem;
       line-height: 2.15;
@@ -35,7 +29,7 @@
   </style>
 </head>
 
-<body style="background-color: lightblue">
+<body>
   @include('components/navbar')
   <section class="vh-100 gradient-custom">
     <div class="container py-5 h-100">
@@ -48,20 +42,19 @@
                 <p><a class="text-decoration-none text-dark" href="./register">Not registered?</a></p>
               </div>
 
-
               <form method="POST" action="{{ url('/auth') }}">
                 @csrf
                 <div class="row">
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
-                      <input type="text" id="firstName" class="form-control form-control-lg" />
-                      <label class="form-label" for="firstName">Email</label>
+                      <input type="email" id="email" name="email" class="form-control form-control-lg" required/>
+                      <label class="form-label" for="email">Email</label>
                     </div>
                   </div>
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
-                      <input type="password" id="lastName" class="form-control form-control-lg" />
-                      <label class="form-label" for="lastName">Password</label>
+                      <input type="password" id="password" name="password" class="form-control form-control-lg" required/>
+                      <label class="form-label" for="password">Password</label>
                     </div>
                   </div>
                 </div>

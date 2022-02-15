@@ -16,12 +16,6 @@
       overflow-x: hidden;
     }
 
-    .gradient-custom {
-      background: #f093fb;
-      background: -webkit-linear-gradient(to bottom right, rgba(240, 147, 251, 1), rgba(245, 87, 108, 1));
-      background: linear-gradient(to bottom right, rgba(240, 147, 251, 1), rgba(245, 87, 108, 1))
-    }
-
     .card-registration .select-input.form-control[readonly]:not([disabled]) {
       font-size: 1rem;
       line-height: 2.15;
@@ -36,7 +30,7 @@
   </style>
 </head>
 
-<body style="background-color: lightblue">
+<body>
   @include('components/navbar')
   <section class="vh-100 gradient-custom">
     <div class="container py-5 h-100">
@@ -51,7 +45,7 @@
                   <div class="col mb-4">
 
                     <div class="form-outline">
-                      <input type="email" id="email" class="form-control form-control-lg" name="email" />
+                      <input type="email" id="email" class="form-control form-control-lg" name="email" required/>
                       <label class="form-label" for="email">Email</label>
                     </div>
 
@@ -62,7 +56,7 @@
                   <div class="col-md-6 mb-4 pb-2">
 
                     <div class="form-outline">
-                      <input type="text" id="dni" class="form-control form-control-lg" name="dni" />
+                      <input type="text" id="dni" class="form-control form-control-lg" name="dni" required/>
                       <label class="form-label" for="dni">DNI</label>
                     </div>
 
@@ -70,7 +64,7 @@
                   <div class="col-md-6 mb-4 pb-2">
 
                     <div class="form-outline">
-                      <input type="password" id="password" class="form-control form-control-lg" name="password"/>
+                      <input type="password" id="password" class="form-control form-control-lg" name="password" required/>
                       <label class="form-label" for="password">Password</label>
                     </div>
 

@@ -20,7 +20,7 @@ use App\Http\Controllers\LoginController;
 
 // Route::get('checks',[ChecksController::class, 'index']);
 // //Inserta elemento nuevo
-// Route::post('checks/insert',[ChecksController::class, 'store']);
+Route::post('checks/insert',[ChecksController::class, 'store']);
 // //Lleva al form de actualización
 // Route::get('checks/update/{id}',[ChecksController::class, 'update']);
 // //Borra un elemento pasado por id
@@ -38,6 +38,7 @@ Route::post('usuarios/insert',[UsersController::class, 'store']);
 // Route::get('usuarios/delete/{id}',[UsersController::class, 'destroy']);
 
 Route::post('/auth',[LoginController::class, 'authenticate']);
+Route::get('/logout',[LoginController::class, 'logout']);
 
 
 Route::get('/', function () {
@@ -48,11 +49,11 @@ Route::get('/home', function () {
     return view('home');
 })->name('home');
 
-Route::post('/edittable', function () {
+Route::middleware('auth')->get('/edittable', function () {
     return view('edittable');
-})->name('edittable');
+})->name('edit');
 
-Route::get('/readtable', function () {
+Route::middleware('auth')->get('/readtable', function () {
     return view('readtable');
 })->name('readtable');
 

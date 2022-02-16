@@ -16,7 +16,6 @@ class ChecksController extends Controller
     public function index()
     {
         $checks = $this->checksModel->obtenerChecks();
-        $bool = false;
         foreach ($checks as $check) {
             $check->entry_time = date('Y-m-d H:i', strtotime($check->entry_time));
             $check->exit_time = date('Y-m-d H:i', strtotime($check->exit_time));

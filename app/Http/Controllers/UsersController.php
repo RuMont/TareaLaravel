@@ -48,6 +48,16 @@ class UsersController extends Controller
         $user = new Users($request->all());
         $password = Hash::make($request->password);
         $user->password = $password;
+
+        $bd_users = $this->userModel->obtenerUsuarios();
+        foreach ($bd_users as $bd_user) {
+            if ($user->email == $bd_user->email) {
+                return back()->withErrors([
+                    'email' => 'already exists an account with the provided email'
+                ]);
+            }
+        }
+
         $user->save();
         return redirect()->route('login');
     }

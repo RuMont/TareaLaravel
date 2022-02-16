@@ -112,7 +112,14 @@
                   </div>
 
                   <div class="col-md-6 mb-4">
+
                     <div class="form-outline">
+                      <input type="time" id="exit" class="form-control form-control-lg"
+                        name="exit_time" disabled/>
+                      <label class="form-label" for="exit">Exit</label>
+                    </div>
+
+                    <div class="d-none form-outline">
                       <input type="time" value="{{ date('H:i') }}" id="exit" class="form-control form-control-lg"
                         name="exit_time" />
                       <label class="form-label" for="exit">Exit</label>
@@ -123,7 +130,7 @@
                 @if (Session::has('errors'))
                   <div class="row">
                     <div class="col text-center">
-                      <p class="text-danger">Error: You probably need to change the centre or the exit time</p>
+                      <p class="text-danger">Error: You probably need to change the centre</p>
                     </div>
                   </div>
                 @endif

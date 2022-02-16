@@ -1,4 +1,4 @@
-<div class="row justify-content-center py-5 w-50 mx-auto">
+<div style="width: 60%" class="row justify-content-center py-5 mx-auto">
     <div class="col-9">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">

@@ -1,4 +1,4 @@
-<section class="p-5">
+<section style="padding: 100px">
   <div class="card bg-light shadow p-3 m-5 rounded">
     <div class="card-body">
 
@@ -18,7 +18,7 @@
               <td>email_placeholder</td>
               <td>dni_placeholder</td>
               <td>{{ $check->entry_time }}</td>
-              <td>{{ $check->exit_time }}</td>
+              <td>{{ $check->exit_time == $check->entry_time ? "-" :  $check->exit_time }}</td>
               <td>centres_placeholder</td>
             </tr>
           @endforeach

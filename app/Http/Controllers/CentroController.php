@@ -24,7 +24,7 @@ class CentroController extends Controller
         
         $bool = false;
         $current_centro = 0;
-        $current_check = $checks[count($checks) - 1];
+        $current_check = count($checks) ? $checks[count($checks) - 1] : 0;
 
         foreach ($checks as $bdcheck) {
             if ($bdcheck->entry_time == $bdcheck->exit_time) {

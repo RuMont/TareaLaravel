@@ -72,6 +72,14 @@
                   </div>
                 </div>
 
+                @if (Session::has('errors'))
+                  <div class="row">
+                    <div class="col text-center">
+                      <p class="text-danger">Error: Provided email has already been used</p>
+                    </div>
+                  </div>
+                @endif
+
                 <div class="mt-4 pt-2 text-center">
                   <input class="btn btn-dark btn-lg" type="submit" value="Submit" />
                 </div>

@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Centro;
 use Illuminate\Http\Request;
 use App\Models\Checks;
-use DateTime;
+use Illuminate\Support\Facades\Auth;
 
 class ChecksController extends Controller
 {
@@ -17,8 +16,12 @@ class ChecksController extends Controller
     public function index()
     {
         $checks = $this->checksModel->obtenerChecks();
-        // TODO Cambiar ruta
-        return view('checks.lista', ['checks' => $checks]);
+        foreach ($checks as $check) {
+            $check->entry_time = date('Y-m-d H:i', strtotime($check->entry_time));
+            $check->exit_time = date('Y-m-d H:i', strtotime($check->exit_time));
+        }
+        
+        return view('readtable', ['checks' => $checks]);
     }
 
     /**
@@ -40,7 +43,10 @@ class ChecksController extends Controller
     public function store(Request $request)
     {
         $checks = new Checks($request->all());
-        dd($checks);
+        $checks->user_id = Auth::id();
+        $checks->entry_time = date('Y-m-d H:i:s', strtotime($checks->entry_time));
+        $checks->exit_time = date('Y-m-d H:i:s', strtotime($checks->exit_time));
+        $checks->centres_id = (int)$checks->centres_id;
         $checks->save();
         return redirect()->route('readtable');
     }

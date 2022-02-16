@@ -17,23 +17,21 @@
                 <div class="col-md-4 mb-4">
                   <div class="form-outline">
                     <input type="text" value="{{ Auth::user()->email }}" id="email"
-                      class="form-control-plaintext mb-2" disabled />
+                      class="form-control-plaintext mb-2" name="user_id" readonly />
                     <label class="form-label" for="email">Email</label>
                   </div>
                 </div>
 
                 <div class="col-md-4 mb-4">
-                  <select class="form-select mb-2" name="checktype">
-                    <option value="entry">Entry</option>
-                    <option value="exit">Exit</option>
-                  </select>
-                  <label class="form-label" for="checktype">Check In/Out</label>
+                  <label class="form-label" for="checktype">Entry</label>
                 </div>
 
                 <div class="col-md-4 mb-4">
-                  <select class="form-select mb-2" name="centres">
-                    <option value="1">medac 1</option>
-                    <option value="2">medac 2</option>
+                  <select class="form-select mb-2" name="centres_id">
+                    <option value="null">Select a centre</option>
+                    @foreach ($centros as $centro)
+                    <option value="{{$centro->id}}">{{$centro->name}}</option>
+                    @endforeach
                   </select>
                   <label class="form-label" for="centres">Centres</label>
                 </div>
@@ -43,14 +41,16 @@
 
                 <div class="col-md-6 mb-4">
                   <div class="form-outline">
-                    <input type="time" value="{{ date('H:i') }}" id="entry" class="form-control form-control-lg" />
+                    <input type="time" value="{{ date('H:i') }}" id="entry" class="form-control form-control-lg"
+                      name="entry_time" />
                     <label class="form-label" for="entry">Entry</label>
                   </div>
                 </div>
 
                 <div class="col-md-6 mb-4">
                   <div class="form-outline">
-                    <input type="time" value="{{ date('H:i') }}" id="exit" class="form-control form-control-lg" />
+                    <input type="time" value="{{ date('H:i') }}" id="exit" class="form-control form-control-lg"
+                      name="exit_time" />
                     <label class="form-label" for="exit">Exit</label>
                   </div>
                 </div>

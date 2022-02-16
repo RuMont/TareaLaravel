@@ -18,8 +18,7 @@ class CentroController extends Controller
     public function index()
     {
         $centros = $this->centroModel->obtenerCentros();
-        // TODO Cambiar ruta
-        return view('centros.lista', ['centros' => $centros]);
+        return view('edittable', ['centros' => $centros]);
     }
 
     /**
@@ -42,7 +41,6 @@ class CentroController extends Controller
     {
         $centro = new Centro($request->all());
         $centro->save();
-        // TODO Cambiar ruta
         return redirect()->action([CentroController::class, 'index']);
     }
 

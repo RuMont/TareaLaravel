@@ -56,7 +56,7 @@
                   <div class="col-md-6 mb-4 pb-2">
 
                     <div class="form-outline">
-                      <input type="text" id="dni" class="form-control form-control-lg" name="dni" required/>
+                      <input type="text" id="dni" class="form-control form-control-lg" name="dni" maxlength="9" required/>
                       <label class="form-label" for="dni">DNI</label>
                     </div>
 
@@ -64,7 +64,7 @@
                   <div class="col-md-6 mb-4 pb-2">
 
                     <div class="form-outline">
-                      <input type="password" id="password" class="form-control form-control-lg" name="password" required/>
+                      <input type="password" id="password" class="form-control form-control-lg" name="password" minlength="8" required/>
                       <label class="form-label" for="password">Password</label>
                     </div>
 

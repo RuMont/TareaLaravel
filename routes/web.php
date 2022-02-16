@@ -49,13 +49,11 @@ Route::get('/home', function () {
     return view('home');
 })->name('home');
 
-Route::middleware('auth')->get('/edittable', function () {
-    return view('edittable');
-})->name('edit');
+Route::middleware('auth')->get('/edittable', [CentroController::class, 'index']
+)->name('edit');
 
-Route::middleware('auth')->get('/readtable', function () {
-    return view('readtable');
-})->name('readtable');
+Route::middleware('auth')->get('/readtable', [ChecksController::class, 'index']
+)->name('readtable');
 
 Route::get('/register', function () {
     return view('register');

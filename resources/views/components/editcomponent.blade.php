@@ -11,7 +11,7 @@
             </div>
 
             @if ($bool)
-              <form action="{{ url('/checks/update') }}" method="POST">
+              <form action="{{ url("/checks/update/$current_check->id") }}" method="POST">
                 @csrf
                 <div class="row">
 
@@ -44,7 +44,7 @@
 
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
-                      <input type="time" value="{{ date('H:i', strtotime($current_entry_exit)) }}" id="entry"
+                      <input type="time" value="{{ date('H:i', strtotime($current_check->entry_time)) }}" id="entry"
                         class="form-control form-control-lg" name="entry_time" readonly />
                       <label class="form-label" for="entry">Entry</label>
                     </div>

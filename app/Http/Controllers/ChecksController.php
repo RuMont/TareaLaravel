@@ -87,14 +87,20 @@ class ChecksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update($id)
+    public function update(Request $request, $id)
     {
-        $checks = Checks::find($id);
+        $check = $this->checksModel->obtenerChecksPorCodigo($id);
+        // Comparamos el string de salida que viene por parámetro con el de
+        // entrada la base de datos (formateado), si es menor, da error
+        if ($request->exit_time < date('H:i', strtotime($check->entry_time))) {
+            return back()->withErrors([
+                "exit_time" => "Exit time cannot be inferior to Entry time"
+            ]);
+        }
         date_default_timezone_set('Europe/Madrid');
-        $checks->update(["updated_at" => date("Y-m-d H:i:s")]);
-        $checks->save();
-        // TODO Cambiar ruta
-        return redirect("/checks");
+        $check->update(["exit_time" => date("Y-m-d H:i", strtotime($request->exit_time))]);
+        $check->save();
+        return redirect("/readtable");
     }
 
     /**

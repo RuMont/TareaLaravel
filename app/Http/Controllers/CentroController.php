@@ -24,22 +24,20 @@ class CentroController extends Controller
         
         $bool = false;
         $current_centro = 0;
-        $current_entry_exit = 0;
+        $current_check = $checks[count($checks) - 1];
 
         foreach ($checks as $bdcheck) {
             if ($bdcheck->entry_time == $bdcheck->exit_time) {
                 $bool = true;
                 $current_centro = $this->centroModel->obtenerCentroPorCodigo($bdcheck->centres_id);
-                $current_entry_exit = $bdcheck->entry_time;
             }
         }
-        // dd($current_entry_exit);
         // Retorna a la vista edittable con params
         return view('edittable', [
          'centros' => $centros,
          'bool' => $bool,
          'current_centro' => $current_centro,
-         'current_entry_exit' => $current_entry_exit
+         'current_check' => $current_check
         ]);
     }
 

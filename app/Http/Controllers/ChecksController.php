@@ -16,6 +16,7 @@ class ChecksController extends Controller
     public function index()
     {
         $checks = $this->checksModel->obtenerChecks();
+        $bool = false;
         foreach ($checks as $check) {
             $check->entry_time = date('Y-m-d H:i', strtotime($check->entry_time));
             $check->exit_time = date('Y-m-d H:i', strtotime($check->exit_time));
@@ -46,6 +47,11 @@ class ChecksController extends Controller
         $checks->user_id = Auth::id();
         $checks->entry_time = date('Y-m-d H:i:s', strtotime($checks->entry_time));
         $checks->exit_time = date('Y-m-d H:i:s', strtotime($checks->exit_time));
+        if ($checks->centres_id == "null") {
+            return back()->withErrors([
+                "centre" => 'centre is null/not valid'
+            ]);
+        }
         $checks->centres_id = (int)$checks->centres_id;
         $checks->save();
         return redirect()->route('readtable');

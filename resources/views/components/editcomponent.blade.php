@@ -30,7 +30,7 @@
                   <select class="form-select mb-2" name="centres_id">
                     <option value="null">Select a centre</option>
                     @foreach ($centros as $centro)
-                    <option value="{{$centro->id}}">{{$centro->name}}</option>
+                      <option value="{{ $centro->id }}">{{ $centro->name }}</option>
                     @endforeach
                   </select>
                   <label class="form-label" for="centres">Centres</label>
@@ -55,6 +55,14 @@
                   </div>
                 </div>
               </div>
+
+              @if (Session::has('errors'))
+                <div class="row">
+                  <div class="col text-center">
+                    <p class="text-danger">Error: You probably need to change the centre or the exit time</p>
+                  </div>
+                </div>
+              @endif
 
               <div class="mt-4 pt-2 text-center">
                 <input class="btn btn-dark" type="submit" value="Check" />

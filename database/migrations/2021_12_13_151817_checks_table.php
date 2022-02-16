@@ -17,8 +17,8 @@ class ChecksTable extends Migration
             Schema::enableForeignKeyConstraints();
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->date('entry_time');
-            $table->date('exit_time');
+            $table->dateTime('entry_time');
+            $table->dateTime('exit_time');
             $table->foreignId('centres_id')->constrained('centres')->onDelete('cascade');
             $table->timestamps();
         });

@@ -5,26 +5,23 @@
       <table id="table_id" class="table table-striped table-hover table-bordered rounded">
         <thead>
           <tr>
-            <th>#</th>
+            <th>E-Mail</th>
             <th>DNI</th>
-            <th>Time</th>
-            <th>Entry/Exit</th>
+            <th>Entry</th>
+            <th>Exit</th>
+            <th>Centre</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>0</td>
-            <td>302934829F</td>
-            <td>2038-01-19 03:14:07</td>
-            <td>Entry</td>
-          </tr>
-          {{-- @foreach ($data as $d)
+          @foreach ($checks as $check)
             <tr>
-              <td>{{ $d->email }}</td>
-              <td>{{ $d->entry_time }}</td>
-              <td>{{ $d->exit_time }}</td>
+              <td>email_placeholder</td>
+              <td>dni_placeholder</td>
+              <td>{{ $check->entry_time }}</td>
+              <td>{{ $check->exit_time }}</td>
+              <td>centres_placeholder</td>
             </tr>
-          @endforeach --}}
+          @endforeach
         </tbody>
       </table>
     </div>
@@ -38,4 +35,3 @@
     });
   });
 </script>
-</div>

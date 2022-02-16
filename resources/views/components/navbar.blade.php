@@ -20,7 +20,6 @@
       </ul>
     </div>
     <div class="d-flex">
-
       @auth
         @if (Route::currentRouteName() != 'readtable')
           <a href="{{ url('/readtable') }}" class="mx-1 btn btn-light">Table</a>

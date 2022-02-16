@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Centro;
 use Illuminate\Http\Request;
 use App\Models\Checks;
-use DateTime;
+use Illuminate\Support\Facades\Auth;
 
 class ChecksController extends Controller
 {
@@ -17,8 +16,12 @@ class ChecksController extends Controller
     public function index()
     {
         $checks = $this->checksModel->obtenerChecks();
-        // TODO Cambiar ruta
-        return view('checks.lista', ['checks' => $checks]);
+        foreach ($checks as $check) {
+            $check->entry_time = date('Y-m-d H:i', strtotime($check->entry_time));
+            $check->exit_time = date('Y-m-d H:i', strtotime($check->exit_time));
+        }
+        
+        return view('readtable', ['checks' => $checks]);
     }
 
     /**
@@ -40,7 +43,15 @@ class ChecksController extends Controller
     public function store(Request $request)
     {
         $checks = new Checks($request->all());
-        dd($checks);
+        $checks->user_id = Auth::id();
+        $checks->entry_time = date('Y-m-d H:i:s', strtotime($checks->entry_time));
+        $checks->exit_time = date('Y-m-d H:i:s', strtotime($checks->exit_time));
+        if ($checks->centres_id == "null") {
+            return back()->withErrors([
+                "centre" => 'centre is null/not valid'
+            ]);
+        }
+        $checks->centres_id = (int)$checks->centres_id;
         $checks->save();
         return redirect()->route('readtable');
     }
@@ -76,14 +87,20 @@ class ChecksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update($id)
+    public function update(Request $request, $id)
     {
-        $checks = Checks::find($id);
+        $check = $this->checksModel->obtenerChecksPorCodigo($id);
+        // Comparamos el string de salida que viene por parámetro con el de
+        // entrada la base de datos (formateado), si es menor, da error
+        if ($request->exit_time < date('H:i', strtotime($check->entry_time))) {
+            return back()->withErrors([
+                "exit_time" => "Exit time cannot be inferior to Entry time"
+            ]);
+        }
         date_default_timezone_set('Europe/Madrid');
-        $checks->update(["updated_at" => date("Y-m-d H:i:s")]);
-        $checks->save();
-        // TODO Cambiar ruta
-        return redirect("/checks");
+        $check->update(["exit_time" => date("Y-m-d H:i", strtotime($request->exit_time))]);
+        $check->save();
+        return redirect("/readtable");
     }
 
     /**

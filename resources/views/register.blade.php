@@ -32,7 +32,8 @@
 
 <body>
   @include('components/navbar')
-  <section class="vh-100 gradient-custom">
+
+  <section class="vh-100">
     <div class="container py-5 h-100">
       <div class="row justify-content-center align-items-center h-100">
         <div class="col-12 col-lg-9 col-xl-7">
@@ -56,7 +57,7 @@
                   <div class="col-md-6 mb-4 pb-2">
 
                     <div class="form-outline">
-                      <input type="text" id="dni" class="form-control form-control-lg" name="dni" required/>
+                      <input type="text" id="dni" class="form-control form-control-lg" name="dni" maxlength="9" required/>
                       <label class="form-label" for="dni">DNI</label>
                     </div>
 
@@ -64,7 +65,7 @@
                   <div class="col-md-6 mb-4 pb-2">
 
                     <div class="form-outline">
-                      <input type="password" id="password" class="form-control form-control-lg" name="password" required/>
+                      <input type="password" id="password" class="form-control form-control-lg" name="password" minlength="8" required/>
                       <label class="form-label" for="password">Password</label>
                     </div>
 
@@ -82,7 +83,9 @@
       </div>
     </div>
   </section>
+
   @include('components/footer')
+
 </body>
 
 </html>

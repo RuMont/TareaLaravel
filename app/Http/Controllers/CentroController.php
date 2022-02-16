@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Centro;
+use App\Models\Checks;
 
 class CentroController extends Controller
 {
     protected $centroModel;
 
-    public function __construct(Centro $centro){
+    public function __construct(Centro $centro, Checks $checks){
+        $this->checksModel = $checks;
         $this->centroModel = $centro;
     }
 
@@ -18,7 +20,27 @@ class CentroController extends Controller
     public function index()
     {
         $centros = $this->centroModel->obtenerCentros();
-        return view('edittable', ['centros' => $centros]);
+        $checks = $this->checksModel->obtenerChecks();
+        
+        $bool = false;
+        $current_centro = 0;
+        $current_entry_exit = 0;
+
+        foreach ($checks as $bdcheck) {
+            if ($bdcheck->entry_time == $bdcheck->exit_time) {
+                $bool = true;
+                $current_centro = $this->centroModel->obtenerCentroPorCodigo($bdcheck->centres_id);
+                $current_entry_exit = $bdcheck->entry_time;
+            }
+        }
+        // dd($current_entry_exit);
+        // Retorna a la vista edittable con params
+        return view('edittable', [
+         'centros' => $centros,
+         'bool' => $bool,
+         'current_centro' => $current_centro,
+         'current_entry_exit' => $current_entry_exit
+        ]);
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Centro;
 use Illuminate\Http\Request;
 use App\Models\Checks;
 use App\Models\Users;
@@ -11,31 +12,43 @@ class ChecksController extends Controller
 {
     protected $checksModel;
     protected $usersModel;
+    protected $centrosModel;
 
-    public function __construct(Checks $checks, Users $users){
+    public function __construct(Checks $checks, Users $users, Centro $centros){
         $this->checksModel = $checks;
         $this->usersModel = $users;
+        $this->centrosModel = $centros;
     }
 
     public function index()
     {
+        $users = $this->usersModel->obtenerUsuarios();
         $checks = $this->checksModel->obtenerChecks();
-        foreach ($checks as $check) {
-            $check->entry_time = date('Y-m-d H:i', strtotime($check->entry_time));
-            $check->exit_time = date('Y-m-d H:i', strtotime($check->exit_time));
-        }
+        $centres = $this->centrosModel->obtenerCentros();
+
+        $newObjectArray = [];
 
         $current_user = $this->usersModel->obtenerUsuarioPorCodigo(Auth::user());
 
-        // Si entra aquí es porque el usuario no es administrador
         if ($current_user[0]->is_admin == 0) {
             // Cambia el $checks que se envía, falta función en modelo
-            // $checks = $this->checksModel->obtenerChecksWhere()
+            $checks = $this->checksModel->obtenerChecksPorUsuario(Auth::user()->id);
 
             // También hay que cambiar los placeholders de email, dni y centre
         }
+        foreach ($checks as $check) {
+            $newObject = $check;
+            $newObject->user_email = $this->usersModel->obtenerUsuarioPorCodigo($check->user_id)->email;
+            $newObject->user_dni = $this->usersModel->obtenerUsuarioPorCodigo($check->user_id)->dni;
+            $newObject->entry_time = date('Y-m-d H:i', strtotime($check->entry_time));
+            $newObject->exit_time = date('Y-m-d H:i', strtotime($check->exit_time));
+            $newObject->centre_name = $this->centrosModel->obtenerCentroPorCodigo($check->centres_id)->name;
+            array_push($newObjectArray, $newObject);
+        }  
         
-        return view('readtable', ['checks' => $checks]);
+        // dd($newObjectArray);
+
+        return view('readtable', ['checks' => $checks, 'users' => $users, 'centres' => $centres, 'newObject' => $newObjectArray]);
     }
 
     /**

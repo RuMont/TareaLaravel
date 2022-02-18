@@ -24,4 +24,5 @@ class Checks extends Model
     public function obtenerChecksPorUsuario($user_id){
         return Checks::where('user_id', $user_id)->get();
     }
+
 }

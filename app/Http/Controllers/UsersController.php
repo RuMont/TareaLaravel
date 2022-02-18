@@ -53,7 +53,7 @@ class UsersController extends Controller
         foreach ($bd_users as $bd_user) {
             if ($user->email == $bd_user->email) {
                 return back()->withErrors([
-                    'email' => 'already exists an account with the provided email'
+                    'email' => 'The provided email address has already been used'
                 ]);
             }
         }

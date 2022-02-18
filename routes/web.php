@@ -38,7 +38,7 @@ Route::post('usuarios/insert',[UsersController::class, 'store']);
 // Route::get('usuarios/delete/{id}',[UsersController::class, 'destroy']);
 
 Route::post('/auth',[LoginController::class, 'authenticate']);
-Route::get('/logout',[LoginController::class, 'logout']);
+Route::middleware('auth')->get('/logout',[LoginController::class, 'logout']);
 
 
 Route::get('/', function () {

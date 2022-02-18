@@ -75,7 +75,9 @@
                 @if (Session::has('errors'))
                   <div class="row">
                     <div class="col text-center">
-                      <p class="text-danger">Error: Provided email has already been used</p>
+                      @foreach ($errors->all(':message') as $error)
+                        <p class="text-danger">{{ $error }}</p>
+                      @endforeach
                     </div>
                   </div>
                 @endif

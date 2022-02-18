@@ -48,13 +48,14 @@
                 <div class="row">
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
-                      <input type="email" id="email" name="email" class="form-control form-control-lg" required/>
+                      <input type="email" id="email" name="email" class="form-control form-control-lg" required />
                       <label class="form-label" for="email">Email</label>
                     </div>
                   </div>
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
-                      <input type="password" id="password" name="password" class="form-control form-control-lg" required/>
+                      <input type="password" id="password" name="password" class="form-control form-control-lg"
+                        required />
                       <label class="form-label" for="password">Password</label>
                     </div>
                   </div>
@@ -63,7 +64,9 @@
                 @if (Session::has('errors'))
                   <div class="row">
                     <div class="col text-center">
-                      <p class="text-danger">Credentials are not valid</p>
+                      @foreach ($errors->all(':message') as $error)
+                        <p class="text-danger">{{ $error }}</p>
+                      @endforeach
                     </div>
                   </div>
                 @endif
@@ -79,7 +82,7 @@
       </div>
     </div>
   </section>
-  
+
   @include('components/footer')
 </body>
 

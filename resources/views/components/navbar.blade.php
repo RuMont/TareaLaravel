@@ -26,7 +26,7 @@
         @endif
 
         @if (Route::currentRouteName() != 'edit')
-          <a href="{{ url('/edittable') }}" class="ms-1 btn btn-outline-light">Check</a>
+          <a href="{{ url('/edittable') }}" class="mx-1 btn btn-outline-light">Check</a>
         @endif
 
         <span class="text-light mt-1 mx-1">{{ Auth::user()->email }}</span>

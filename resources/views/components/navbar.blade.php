@@ -13,6 +13,13 @@
             <a class="nav-link active text-light" aria-current="page" href="{{ url('/') }}">Home</a>
           </li>
         @endif
+        @auth
+          @if (Auth::user()->is_admin == 1)
+            <li class="nav-item">
+              <a href="{{ url('/admin') }}" class="nav-link text-light">Admin Management</a>
+            </li>
+          @endif
+        @endauth
         <li class="nav-item">
           <button class="nav-link border-0 bg-transparent text-light">About</button>
         </li>
@@ -29,8 +36,8 @@
           <a href="{{ url('/edittable') }}" class="mx-1 btn btn-outline-light">Check</a>
         @endif
 
-        <span class="text-light mt-1 mx-1">{{ Auth::user()->email }}</span>
-        <a href="{{ url('/logout') }}" class="ms-1 btn btn-outline-danger">Logout</a>
+        <span class="text-light nav-link">{{ Auth::user()->email }}</span>
+        <a href="{{ url('/logout') }}" class="btn btn-outline-danger">Logout</a>
       @else
         @if (Route::currentRouteName() == 'register')
           <a href="{{ url('/login') }}" class="btn btn-light">Sign In</a>

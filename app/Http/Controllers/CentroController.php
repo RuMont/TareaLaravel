@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Centro;
 use App\Models\Checks;
+use Illuminate\Support\Facades\Auth;
 
 class CentroController extends Controller
 {
@@ -20,7 +21,7 @@ class CentroController extends Controller
     public function index()
     {
         $centros = $this->centroModel->obtenerCentros();
-        $checks = $this->checksModel->obtenerChecks();
+        $checks = $this->checksModel->obtenerChecksPorUsuario(Auth::user()->id);
         
         $bool = false;
         $current_centro = 0;

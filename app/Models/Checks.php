@@ -19,5 +19,9 @@ class Checks extends Model
 
     public function obtenerChecksPorCodigo($primaryKey){
         return Checks::find($primaryKey);
-}
+    }
+
+    public function obtenerChecksPorUsuario($user_id){
+        return Checks::where('user_id', $user_id)->get();
+    }
 }

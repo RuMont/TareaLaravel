@@ -14,7 +14,8 @@ class ChecksController extends Controller
     protected $usersModel;
     protected $centrosModel;
 
-    public function __construct(Checks $checks, Users $users, Centro $centros){
+    public function __construct(Checks $checks, Users $users, Centro $centros)
+    {
         $this->checksModel = $checks;
         $this->usersModel = $users;
         $this->centrosModel = $centros;
@@ -44,11 +45,14 @@ class ChecksController extends Controller
             $newObject->exit_time = date('Y-m-d H:i', strtotime($check->exit_time));
             $newObject->centre_name = $this->centrosModel->obtenerCentroPorCodigo($check->centres_id)->name;
             array_push($newObjectArray, $newObject);
-        }  
-        
-        // dd($newObjectArray);
+        }
 
-        return view('readtable', ['checks' => $checks, 'users' => $users, 'centres' => $centres, 'newObject' => $newObjectArray]);
+        return view('readtable', [
+            'checks' => $checks,
+            'users' => $users,
+            'centres' => $centres,
+            'newObject' => $newObjectArray,
+        ]);
     }
 
     /**
@@ -88,7 +92,7 @@ class ChecksController extends Controller
         }
         $checks->centres_id = (int)$checks->centres_id;
         $checks->save();
-        return redirect()->route('readtable');
+        return redirect('/readtable')->with('status', 'You have just checked');
     }
 
     /**
@@ -135,7 +139,7 @@ class ChecksController extends Controller
         date_default_timezone_set('Europe/Madrid');
         $check->update(["exit_time" => date("Y-m-d H:i", strtotime($request->exit_time))]);
         $check->save();
-        return redirect("/readtable");
+        return redirect("/readtable")->with('status', 'You have just updated your previous check');
     }
 
     /**

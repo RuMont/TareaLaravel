@@ -57,9 +57,8 @@ class UsersController extends Controller
                 ]);
             }
         }
-
         $user->save();
-        return redirect()->route('login');
+        return redirect('/login')->with('status', 'You have just created an account');
     }
 
     /**

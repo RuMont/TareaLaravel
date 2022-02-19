@@ -15,11 +15,11 @@
         <tbody>
           @foreach ($newObject as $new)
             <tr>
-              <td>{{ $new->user_email}}</td>
-              <td>{{$new->user_dni}}</td>
+              <td>{{ $new->user_email }}</td>
+              <td>{{ $new->user_dni }}</td>
               <td>{{ $new->entry_time }}</td>
-              <td>{{ $new->exit_time == $new->entry_time ? "-" :  $new->exit_time }}</td>
-              <td>{{$new->centre_name}}</td>
+              <td>{{ $new->exit_time == $new->entry_time ? '-' : $new->exit_time }}</td>
+              <td>{{ $new->centre_name }}</td>
             </tr>
           @endforeach
         </tbody>

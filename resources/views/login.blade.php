@@ -9,6 +9,7 @@
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <title>Log In</title>
   <style>
     body {
@@ -32,9 +33,14 @@
 <body>
   @include('components/navbar')
 
-  <section class="vh-100 gradient-custom">
-    <div class="container py-5 h-100">
-      <div class="row justify-content-center align-items-center h-100">
+  <section class="vh-100">
+    @if (session('status'))
+    <div class="row bg-success animate__animated animate__fadeOutUp animate__delay-3s">
+      <p class="text-center text-light m-0 p-2">{{session('status')}}</p>
+    </div>
+    @endif
+    <div class="container h-100">
+      <div class="row justify-content-center align-items-center h-75">
         <div class="col-12 col-lg-9 col-xl-7">
           <div class="card shadow-lg card-registration" style="border-radius: 15px;">
             <div class="card-body p-4 p-md-5">

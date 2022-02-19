@@ -20,6 +20,7 @@
 
 <body>
   @include('components/navbar')
+  <p class="d-none">{{ date_default_timezone_set('Europe/Madrid') }}</p>
   <section class="p-5">
     <form class="col-6 d-flex flex-column mx-auto mb-5 border p-5" action="{{ url('/admin/checks/insert') }}" method="post">
       @csrf {{-- Token obligatorio para utilizar method="post" --}}

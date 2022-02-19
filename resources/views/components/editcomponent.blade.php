@@ -6,16 +6,15 @@
         <div class="card shadow-lg card-registration" style="border-radius: 15px;">
           <div class="card-body p-4 p-md-5">
 
-            <div class="d-flex justify-content-between">
-              <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Check In/Out</h3>
-            </div>
-
             @if ($bool)
+              <div class="d-flex justify-content-between">
+                <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Check Out</h3>
+              </div>
               <form action="{{ url("/checks/update/$current_check->id") }}" method="POST">
                 @csrf
                 <div class="row">
 
-                  <div class="col-md-4 mb-4">
+                  <div class="col-md-6 mb-4">
                     <div class="form-outline">
                       <input type="text" value="{{ Auth::user()->email }}" id="email"
                         class="form-control-plaintext mb-2" name="user_id" readonly />
@@ -23,11 +22,7 @@
                     </div>
                   </div>
 
-                  <div class="col-md-4 mb-4">
-                    <label class="form-label" for="checktype">Exit</label>
-                  </div>
-
-                  <div class="col-md-4 mb-4">
+                  <div class="col-md-6 mb-4">
                     {{-- Lo que se muestra al usuario --}}
                     <select class="form-select mb-2" disabled>
                       <option value="{{ $current_centro->id }}">{{ $current_centro->name }}</option>
@@ -76,11 +71,14 @@
               </form>
 
             @else
+              <div class="d-flex justify-content-between">
+                <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Check In</h3>
+              </div>
               <form action="{{ url('/checks/insert') }}" method="POST">
                 @csrf
                 <div class="row">
 
-                  <div class="col-md-4 mb-4">
+                  <div class="col-md-6 mb-4">
                     <div class="form-outline">
                       <input type="text" value="{{ Auth::user()->email }}" id="email"
                         class="form-control-plaintext mb-2" name="user_id" readonly />
@@ -88,11 +86,7 @@
                     </div>
                   </div>
 
-                  <div class="col-md-4 mb-4">
-                    <label class="form-label" for="checktype">Entry</label>
-                  </div>
-
-                  <div class="col-md-4 mb-4">
+                  <div class="col-md-6 mb-4">
                     <select class="form-select mb-2" name="centres_id">
                       <option value="null">Select a centre</option>
                       @foreach ($centros as $centro)

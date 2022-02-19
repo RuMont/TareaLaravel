@@ -31,7 +31,7 @@
 
   </style>
 
-  <title>Read Table</title>
+  <title>Table</title>
 </head>
 
 <body>
